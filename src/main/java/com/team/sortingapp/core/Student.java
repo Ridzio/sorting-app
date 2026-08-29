@@ -6,8 +6,6 @@ import java.util.Objects;
  * Пример доменной сущности с паттерном Builder.
  * Реализацию тела методов (валидацию, equals/hashCode и т.д.)
  * дописывает разработчик, ответственный за domain-модель.
- * Сигнатура класса и Builder — зафиксированный контракт, не менять
- * без согласования с командой.
  */
 public class Student implements Sortable {
 
@@ -39,14 +37,43 @@ public class Student implements Sortable {
 
     @Override
     public Comparable<?> getFieldByIndex(int fieldIndex) {
-        // TODO: разработчику domain-модуля — вернуть groupNumber / averageGrade
-        // / recordBookNumber в зависимости от fieldIndex (0, 1, 2)
-        throw new UnsupportedOperationException("TODO: implement");
+        // Логика для Роли 2 (Стратегии сортировки)
+        return switch (fieldIndex) {
+            case 0 -> groupNumber;       // Integer реализует Comparable
+            case 1 -> averageGrade;      // Double реализует Comparable
+            case 2 -> recordBookNumber;  // String реализует Comparable
+            default -> throw new IllegalArgumentException("Неверный индекс поля: " + fieldIndex);
+        };
     }
 
     @Override
     public int getFieldCount() {
         return 3;
+    }
+
+    // Переопределяем для тестов (Роль 4) и вывода (Роль 3)
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return groupNumber == student.groupNumber &&
+                Double.compare(student.averageGrade, averageGrade) == 0 &&
+                Objects.equals(recordBookNumber, student.recordBookNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(groupNumber, averageGrade, recordBookNumber);
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "groupNumber=" + groupNumber +
+                ", averageGrade=" + averageGrade +
+                ", recordBookNumber='" + recordBookNumber + '\'' +
+                '}';
     }
 
     public static class Builder {
@@ -70,9 +97,17 @@ public class Student implements Sortable {
         }
 
         public Student build() {
-            // TODO: разработчику domain-модуля — добавить валидацию полей
-            // (например: groupNumber > 0, averageGrade в диапазоне 0..5,
-            // recordBookNumber не пустой и соответствует формату)
+            // Валидация полей согласно ТЗ
+            if (groupNumber <= 0) {
+                throw new IllegalArgumentException("Номер группы должен быть больше 0");
+            }
+            if (averageGrade < 0.0 || averageGrade > 5.0) {
+                throw new IllegalArgumentException("Средний балл должен быть в диапазоне от 0.0 до 5.0");
+            }
+            if (recordBookNumber == null || recordBookNumber.isBlank()) {
+                throw new IllegalArgumentException("Номер зачётки не может быть пустым");
+            }
+
             return new Student(this);
         }
     }
