@@ -6,14 +6,9 @@ import com.team.sortingapp.core.Sortable;
 
 import java.util.Comparator;
 
-/*
- * Специальная стратегия для доп. задания 1:
- * Объекты с ЧЁТНЫМИ значениями числового поля сортируются по возрастанию,
- * объекты с НЕЧЁТНЫМИ значениями остаются на своих позициях.
- */
 public class EvenOddFilterStrategy<T extends Sortable> implements SortStrategy<T> {
 
-    private final int fieldIndex; // Индекс числового поля для проверки чётности
+    private final int fieldIndex;
 
     public EvenOddFilterStrategy(int fieldIndex) {
         this.fieldIndex = fieldIndex;
@@ -27,15 +22,11 @@ public class EvenOddFilterStrategy<T extends Sortable> implements SortStrategy<T
         }
 
         int n = collection.size();
-
-        // Собираем индексы элементов с чётными значениями поля
-        // и их значения для сортировки
         int[] evenIndices = new int[n];
         int evenCount = 0;
 
         for (int i = 0; i < n; i++) {
             Comparable<?> val = collection.get(i).getFieldByIndex(this.fieldIndex);
-            // Проверяем, что значение — число (Integer или Double)
             if (val instanceof Number) {
                 int intValue = ((Number) val).intValue();
                 if (intValue % 2 == 0) {
@@ -44,7 +35,6 @@ public class EvenOddFilterStrategy<T extends Sortable> implements SortStrategy<T
             }
         }
 
-        // Сортируем только элементы с чётными значениями (пузырьком)
         for (int i = 0; i < evenCount - 1; i++) {
             for (int j = 0; j < evenCount - 1 - i; j++) {
                 int idx1 = evenIndices[j];
@@ -64,7 +54,6 @@ public class EvenOddFilterStrategy<T extends Sortable> implements SortStrategy<T
 
     @Override
     public void sort(CustomCollection<T> collection, Comparator<T> comparator) {
-        // Для компаратора используем ту же логику, но сравнение через компаратор
         if (collection == null || collection.isEmpty() || comparator == null) {
             return;
         }
