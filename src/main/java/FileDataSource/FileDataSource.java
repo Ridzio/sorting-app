@@ -9,15 +9,15 @@ import com.team.sortingapp.core.DataSource;
 import com.team.sortingapp.core.Sortable;
 import com.team.sortingapp.core.Student;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
+import java.util.stream.*;
 
 public class FileDataSource<T extends Sortable> implements DataSource<T> {
 
     private final String filePath;
-    private static final String DEFAULT_PATH = "src/FileDataSource/default.json";
+    private static final String DEFAULT_PATH = "src/main/resources/default.json";
     private final JsonFactory factory;
 
     public FileDataSource(String filePath) {
@@ -33,7 +33,7 @@ public class FileDataSource<T extends Sortable> implements DataSource<T> {
     public CustomCollection<T> load(int length) {
         if (length <= 0) return new ArrayCustomCollection<>(0);
 
-        try (JsonParser parser = factory.createParser(filePath)) {
+        try (JsonParser parser = factory.createParser(new File(filePath))) {
 
             if (parser.nextToken() != JsonToken.START_ARRAY) {
                 throw new RuntimeException("Ожидается JSON-массив в файле: " + filePath);
@@ -50,14 +50,13 @@ public class FileDataSource<T extends Sortable> implements DataSource<T> {
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
-                    }).takeWhile(Optional::isPresent)
+                    }).takeWhile(opt -> opt != null)
                     .limit(length)
+                    .filter(Optional::isPresent)
                     .map(Optional::get)
-                    .map(student -> {
-                        @SuppressWarnings("unchecked")
-                        T item = (T) student;
-                        return item;
-                    }).toList();
+                    .map(student -> (T) student)
+                    .map(student -> (T) student)  // приведение типа
+                    .collect(Collectors.toList());
 
             ArrayCustomCollection<T> collection = new ArrayCustomCollection<>(tempList.size());
             tempList.forEach(collection::add);
