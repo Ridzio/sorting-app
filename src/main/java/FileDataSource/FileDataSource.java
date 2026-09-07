@@ -119,6 +119,9 @@ public class FileDataSource<T extends Sortable> implements DataSource<T> {
                         if (recordBookNumber.isEmpty()) {
                             System.err.println("Ошибка: recordBookNumber не должен быть пустым");
                             isObjectValid = false;
+                        }else if (!recordBookNumber.matches("\\d+")) {
+                            System.err.println("Ошибка: recordBookNumber должен содержать только цифры");
+                            isObjectValid = false;
                         }
                     } catch (IOException e) {
                         System.err.println("Ошибка: recordBookNumber не является строкой");
