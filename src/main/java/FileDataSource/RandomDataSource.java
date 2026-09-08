@@ -6,6 +6,7 @@ import com.team.sortingapp.core.DataSource;
 import com.team.sortingapp.core.Sortable;
 import com.team.sortingapp.core.Student;
 
+import java.math.*;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Stream;
@@ -31,7 +32,7 @@ public class RandomDataSource<T extends Sortable> implements DataSource<T> {
 
     private Student Generate() {
         int groupNumber = random.nextInt(99999) + 1;
-        double averageGrade = random.nextDouble() * 5.0;
+        double averageGrade = Math.floor((random.nextDouble() * 5.0) * 100) / 100.0;
         String recordBookNumber = String.valueOf(random.nextInt(99999) + 1);
 
         return Student.builder()
