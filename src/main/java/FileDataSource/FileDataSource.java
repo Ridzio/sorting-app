@@ -3,13 +3,16 @@ package FileDataSource;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
+
 import com.team.sortingapp.core.ArrayCustomCollection;
 import com.team.sortingapp.core.CustomCollection;
 import com.team.sortingapp.core.DataSource;
 import com.team.sortingapp.core.Sortable;
 import com.team.sortingapp.core.Student;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.*;
@@ -55,7 +58,6 @@ public class FileDataSource<T extends Sortable> implements DataSource<T> {
                     .filter(Optional::isPresent)
                     .map(Optional::get)
                     .map(student -> (T) student)
-                    .map(student -> (T) student)  // приведение типа
                     .collect(Collectors.toList());
 
             ArrayCustomCollection<T> collection = new ArrayCustomCollection<>(tempList.size());
@@ -137,8 +139,7 @@ public class FileDataSource<T extends Sortable> implements DataSource<T> {
 
         if (isObjectValid &&
                 groupNumber > 0 &&
-                recordBookNumber != null &&
-                !recordBookNumber.isEmpty()) {
+                recordBookNumber != null) {
 
             Student student = Student.builder()
                     .groupNumber(groupNumber)
