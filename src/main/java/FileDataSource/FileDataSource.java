@@ -47,7 +47,7 @@ public class FileDataSource<T extends Sortable> implements DataSource<T> {
                         try {
 
                             if (parser.nextToken() == JsonToken.END_ARRAY) {
-                                return Optional.<Student>empty();
+                                return null;
                             }
                             return parseStudent(parser);
 
