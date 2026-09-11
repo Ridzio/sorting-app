@@ -48,6 +48,7 @@ public class Student implements Sortable {
         };
     }
 
+    @JsonIgnore
     @Override
     public int getFieldCount() {
         return 3;
@@ -63,9 +64,6 @@ public class Student implements Sortable {
                 Double.compare(student.averageGrade, averageGrade) == 0 &&
                 Objects.equals(recordBookNumber, student.recordBookNumber);
     }
-
-    @JsonIgnore
-    private String fieldCount;
 
     @Override
     public int hashCode() {
