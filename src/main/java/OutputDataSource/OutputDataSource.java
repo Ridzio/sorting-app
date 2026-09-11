@@ -1,16 +1,20 @@
 package OutputDataSource;
 
-import FileDataSource.*;
 import FileDataSource.FileDataSource;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.team.sortingapp.core.*;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-import java.io.File;
+import com.team.sortingapp.core.CustomCollection;
+import com.team.sortingapp.core.DataSource;
+import com.team.sortingapp.core.DataWriter;
+import com.team.sortingapp.core.Sortable;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 
 public class OutputDataSource<T extends Sortable> implements DataWriter<T> {
@@ -28,17 +32,13 @@ public class OutputDataSource<T extends Sortable> implements DataWriter<T> {
         if (collection == null || collection.isEmpty()) return;
 
         String targetPath = (filePath == null || filePath.isEmpty()) ? Path : filePath;
-
         File file = new File(targetPath);
 
-        List<T> result = new ArrayList<>();
+        Set<T> result = new LinkedHashSet<>();
 
         if (file.exists() && file.length() > 0) {
-
             DataSource<T> dataSource = new FileDataSource<T>(targetPath);
-
             CustomCollection<T> oldCollection = dataSource.load(Integer.MAX_VALUE);
-
             for (T item : oldCollection) {
                 result.add(item);
             }
