@@ -1,0 +1,102 @@
+[
+  {
+    "groupNumber": 101,
+    "averageGrade": 4.2,
+    "recordBookNumber": "482716"
+  },
+  {
+    "groupNumber": 102,
+    "averageGrade": 3.8,
+    "recordBookNumber": "935124"
+  },
+  {
+    "groupNumber": 103,
+    "averageGrade": 4.7,
+    "recordBookNumber": "156793"
+  },
+  {
+    "groupNumber": 104,
+    "averageGrade": 3.5,
+    "recordBookNumber": "624518"
+  },
+  {
+    "groupNumber": 105,
+    "averageGrade": 4.9,
+    "recordBookNumber": "871234"
+  },
+  {
+    "groupNumber": 106,
+    "averageGrade": 3.2,
+    "recordBookNumber": "342876"
+  },
+  {
+    "groupNumber": 107,
+    "averageGrade": 4.0,
+    "recordBookNumber": "759301"
+  },
+  {
+    "groupNumber": 108,
+    "averageGrade": 4.5,
+    "recordBookNumber": "683492"
+  },
+  {
+    "groupNumber": 109,
+    "averageGrade": 3.9,
+    "recordBookNumber": "217845"
+  },
+  {
+    "groupNumber": 110,
+    "averageGrade": 4.8,
+    "recordBookNumber": "546372"
+  },
+  {
+    "groupNumber": 111,
+    "averageGrade": 3.6,
+    "recordBookNumber": "928174"
+  },
+  {
+    "groupNumber": 112,
+    "averageGrade": 4.3,
+    "recordBookNumber": "374619"
+  },
+  {
+    "groupNumber": "аыолр123",
+    "averageGrade": 5.0,
+    "recordBookNumber": "861532"
+  },
+  {
+    "groupNumber": 114,
+    "averageGrade": 3.4,
+    "recordBookNumber": "295847"
+  },
+  {
+    "groupNumber": 115,
+    "averageGrade": 4.1,
+    "recordBookNumber": "713268"
+  },
+  {
+    "groupNumber": 116,
+    "averageGrade": 3.7,
+    "recordBookNumber": "459613"
+  },
+  {
+    "groupNumber": 117,
+    "averageGrade": 9.0,
+    "recordBookNumber": "827594"
+  },
+  {
+    "groupNumber": 118,
+    "averageGrade": 3.3,
+    "recordBookNumber": null
+  },
+  {
+    "groupNumber": 119,
+    "averageGrade": 4.4,
+    "recordBookNumber": "378165"
+  },
+  {
+    "groupNumber": 120,
+    "averageGrade": 4.9,
+    "recordBookNumber": "502739"
+  }
+]
