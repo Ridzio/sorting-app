@@ -18,18 +18,18 @@ import java.util.Set;
 public class OutputDataSource<T extends Sortable> implements DataWriter<T> {
 
     private static final String DEFAULT_PATH = "src/main/resources/defaultoutput.json";
-    private final String Path;
+    private final String path;
     private final ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 
     public OutputDataSource(String filePath) {
-        this.Path = (filePath == null || filePath.isEmpty()) ? DEFAULT_PATH : filePath;
+        this.path = (filePath == null || filePath.isEmpty()) ? DEFAULT_PATH : filePath;
     }
 
     @Override
     public void writeAppend(CustomCollection<T> collection, String filePath) {
         if (collection == null || collection.isEmpty()) return;
 
-        String targetPath = (filePath == null || filePath.isEmpty()) ? Path : filePath;
+        String targetPath = (filePath == null || filePath.isEmpty()) ? path : filePath;
         File file = new File(targetPath);
 
         Set<T> result = new LinkedHashSet<>();
