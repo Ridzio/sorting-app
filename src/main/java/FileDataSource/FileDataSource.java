@@ -33,6 +33,7 @@ public class FileDataSource<T extends Sortable> implements DataSource<T> {
         this.factory = new JsonFactory();
     }
 
+
     @Override
     public CustomCollection<T> load(int length) {
         if (length <= 0) return new ArrayCustomCollection<>(0);
@@ -55,8 +56,8 @@ public class FileDataSource<T extends Sortable> implements DataSource<T> {
                             throw new RuntimeException(e);
                         }
                     }).takeWhile(opt -> opt != null)
-                    .limit(length)
                     .filter(Optional::isPresent)
+                    .limit(length)
                     .map(Optional::get)
                     .map(student -> (T) student)
                     .collect(Collectors.toList());
