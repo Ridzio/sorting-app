@@ -64,11 +64,6 @@ public class ArrayCustomCollection<T> implements CustomCollection<T> {
         };
     }
 
-    @Override
-    public Iterable<T> stream() {
-        return this;
-    }
-
     private void checkIndex(int index) {
         if (index < 0 || index >= currentSize) {
             throw new IndexOutOfBoundsException("Неверный индекс: " + index + ", Размер: " + currentSize);

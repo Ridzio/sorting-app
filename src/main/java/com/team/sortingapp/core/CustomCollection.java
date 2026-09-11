@@ -20,5 +20,4 @@ public interface CustomCollection<T> extends Iterable<T> {
 
     boolean isEmpty();
 
-    Iterable<T> stream();
 }
