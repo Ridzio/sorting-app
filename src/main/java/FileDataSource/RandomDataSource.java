@@ -20,7 +20,7 @@ public class RandomDataSource<T extends Sortable> implements DataSource<T> {
             return new ArrayCustomCollection<>(0);
         }
 
-        List<T> tempList = Stream.generate(this::Generate)
+        List<T> tempList = Stream.generate(this::generate)
                 .limit(length)
                 .map(student -> (T) student)
                 .toList();
@@ -29,7 +29,7 @@ public class RandomDataSource<T extends Sortable> implements DataSource<T> {
                 .collect(ArrayCustomCollection.toCustomCollection(tempList.size()));
     }
 
-    private Student Generate() {
+    private Student generate() {
         int groupNumber = random.nextInt(99999) + 1;
         double averageGrade = Math.floor((random.nextDouble() * 5.0) * 100) / 100.0;
         String recordBookNumber = String.valueOf(random.nextInt(99999) + 1);

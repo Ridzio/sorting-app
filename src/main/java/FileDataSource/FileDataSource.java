@@ -71,7 +71,6 @@ public class FileDataSource<T extends Sortable> implements DataSource<T> {
     }
 
     private Optional<Student> parseStudent(JsonParser parser) throws IOException {
-        // Проверяем начало объекта
         if (parser.currentToken() != JsonToken.START_OBJECT) {
             if (parser.currentToken() == JsonToken.END_ARRAY) {
                 return Optional.empty();
