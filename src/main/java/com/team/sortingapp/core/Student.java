@@ -1,5 +1,7 @@
 package com.team.sortingapp.core;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Objects;
 
 /**
@@ -61,6 +63,9 @@ public class Student implements Sortable {
                 Double.compare(student.averageGrade, averageGrade) == 0 &&
                 Objects.equals(recordBookNumber, student.recordBookNumber);
     }
+
+    @JsonIgnore
+    private String fieldCount;
 
     @Override
     public int hashCode() {
