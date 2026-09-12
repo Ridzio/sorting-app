@@ -1,0 +1,21 @@
+[ {
+  "groupNumber" : 11445,
+  "averageGrade" : 1.06,
+  "recordBookNumber" : "91272"
+}, {
+  "groupNumber" : 33128,
+  "averageGrade" : 3.26,
+  "recordBookNumber" : "62908"
+}, {
+  "groupNumber" : 18616,
+  "averageGrade" : 0.07,
+  "recordBookNumber" : "35673"
+}, {
+  "groupNumber" : 67323,
+  "averageGrade" : 3.49,
+  "recordBookNumber" : "32705"
+}, {
+  "groupNumber" : 61875,
+  "averageGrade" : 0.06,
+  "recordBookNumber" : "24104"
+} ]

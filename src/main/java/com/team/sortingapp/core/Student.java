@@ -1,5 +1,7 @@
 package com.team.sortingapp.core;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Objects;
 
 /**
@@ -46,6 +48,7 @@ public class Student implements Sortable {
         };
     }
 
+    @JsonIgnore
     @Override
     public int getFieldCount() {
         return 3;

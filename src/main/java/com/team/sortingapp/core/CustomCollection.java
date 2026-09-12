@@ -19,4 +19,5 @@ public interface CustomCollection<T> extends Iterable<T> {
     int size();
 
     boolean isEmpty();
+
 }
