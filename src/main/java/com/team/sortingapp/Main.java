@@ -1,6 +1,5 @@
 package com.team.sortingapp;
 
-
 import com.team.sortingapp.core.CustomCollection;
 import com.team.sortingapp.core.DataSource;
 import com.team.sortingapp.core.DataWriter;
@@ -15,7 +14,6 @@ import io.FileDataSource;
 import io.OutputDataSource;
 import io.RandomDataSource;
 import io.ManualDataSource;
-import com.team.sortingapp.core.*;
 
 import java.util.Comparator;
 import java.util.Scanner;
@@ -29,7 +27,7 @@ public class Main {
 
         boolean isRunning = true;
 
-        System.out.println("Sorting App — TODO: implement CLI menu loop");
+        System.out.println("=== Sorting App ===");
 
         while (isRunning) {
             System.out.println();
@@ -51,22 +49,28 @@ public class Main {
     }
 
     private static void printMenu() {
-        System.out.println("---".repeat(6));
-        System.out.println("--- Главное меню ---");
-        System.out.println("1. Заполнить данные");
-        System.out.println("2. Отсортировать");
-        System.out.println("3. Записать результат в файл");
-        System.out.println("4. Подсчитать вхождения");
-        System.out.println("0. Выйти");
+
+        System.out.println("""
+                --------------------
+                --- Главное меню ---
+                1. Заполнить данные
+                2. Отсортировать
+                3. Записать результат в файл
+                4. Подсчитать вхождения
+                0. Выйти
+                """);
         System.out.print("Ваш выбор: ");
     }
 
     private static void handleFileData() {
-        System.out.println("\n--- Заполнение данных ---");
-        System.out.println("1. Из файла");
-        System.out.println("2. Рандомно");
-        System.out.println("3. Вручную");
-        System.out.println("0. Назад");
+
+        System.out.println("""
+                --- Заполнение данных ---
+                1. Из файла
+                2. Рандомно
+                3. Вручную
+                0. Назад
+                """);
         System.out.print("Ваш выбор: ");
 
         String choice = SCANNER.nextLine().trim();
@@ -121,12 +125,14 @@ public class Main {
             return;
         }
 
-        System.out.println("\n--- Сортировка --- ");
-        System.out.println("Выберите поле:");
-        System.out.println("1. Номер группы");
-        System.out.println("2. Средний балл");
-        System.out.println("3. Номер зачетки");
-        System.out.println("0. Назад");
+        System.out.println("""
+                --- Сортировка ---
+                Выберите поле:
+                1. Номер группы
+                2. Средний балл
+                3. Номер зачётки
+                0. Назад
+                """);
         System.out.print("Ваш выбор: ");
 
         String fieldInput = SCANNER.nextLine().trim();
@@ -147,11 +153,13 @@ public class Main {
             }
         }
 
-        System.out.println("\nВыберите алгоритм:");
-        System.out.println("1. Bubble Sort");
-        System.out.println("2. Selection Sort");
-        System.out.println("3. EvenOddFilter");
-        System.out.println("0. Назад");
+        System.out.println("""
+                Выберите алгоритм:
+                1. Bubble Sort
+                2. Selection Sort
+                3. EvenOddFilter
+                0. Назад
+                """);
         System.out.print("Ваш выбор: ");
 
         String algo = SCANNER.nextLine().trim();
@@ -166,10 +174,12 @@ public class Main {
             return;
         }
 
-        System.out.println("\nВыберите порядок: ");
-        System.out.println("1. По возрастанию");
-        System.out.println("2. По убыванию");
-        System.out.println("0. Назад");
+        System.out.println("""
+                Выберите порядок:
+                1. По возрастанию
+                2. По убыванию
+                0. Назад
+                """);
         System.out.print("Ваш выбор: ");
 
         String order = SCANNER.nextLine().trim();
@@ -202,7 +212,7 @@ public class Main {
             strategy.sort(currentCollection, fieldIndex);
         }
 
-        System.out.println("\nСортировка выполнен.");
+        System.out.println("\nСортировка выполнена.");
         System.out.println(" Поле: " + fieldName(fieldIndex));
         System.out.println(" Алгоритм: " + algoName(algo));
         System.out.println(" Порядок: " + ("2".equals(order) ? "по убыванию" : "по возрастанию"));
@@ -234,7 +244,7 @@ public class Main {
             return;
         }
 
-        System.out.println("\n--- Подсчет вхождений ---");
+        System.out.println("\n--- Подсчёт вхождений ---");
         System.out.println("Введите студента для поиска: ");
 
         try {
