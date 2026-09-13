@@ -16,6 +16,9 @@ public class ArrayCustomCollection<T> implements CustomCollection<T> {
 
     @Override
     public void add(T item) {
+        if (item == null) {
+            throw new IllegalArgumentException("Нельзя добавить null в коллекцию");
+        }
         if (currentSize >= elements.length) {
             throw new IllegalStateException("Коллекция заполнена! Максимальный размер: " + elements.length);
         }
@@ -30,6 +33,9 @@ public class ArrayCustomCollection<T> implements CustomCollection<T> {
 
     @Override
     public void set(int index, T item) {
+        if (item == null) {
+            throw new IllegalArgumentException("Нельзя записать null в коллекцию");
+        }
         checkIndex(index);
         elements[index] = item;
     }
